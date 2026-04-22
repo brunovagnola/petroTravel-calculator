@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuel Pulse - Calculadora Futurista</title>
+    <title>Fuel Pulse - Eco</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#050509',
-                        electricBlue: '#00f2fe',
-                        neonPurple: '#4facfe',
-                    },
-                    boxShadow: {
-                        'neon-blue': '0 0 15px rgba(0, 242, 254, 0.5)',
-                        'neon-card': '0 0 25px rgba(79, 172, 254, 0.2)',
+                        ecoGreen: '#22c55e',
+                        ecoDark: '#166534',
+                        ecoLight: '#f0fdf4',
                     }
                 }
             }
@@ -26,61 +22,63 @@
     </script>
 </head>
 
-<body class="bg-darkBg text-gray-200 min-h-screen flex items-center justify-center p-4 font-sans antialiased">
+<body class="bg-ecoLight text-gray-800 min-h-screen flex items-center justify-center p-4 font-sans">
 
-    <div class="w-full max-w-md bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-neon-card">
+    <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-md border border-gray-100">
         
-        <h1 class="text-3xl font-extrabold text-center mb-8 tracking-widest uppercase">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-neonPurple to-electricBlue">
-                Fuel Pulse
-            </span>
+        <h1 class="text-2xl font-semibold text-center mb-2">
+            Fuel Pulse
         </h1>
         
-        <p class="text-center text-gray-400 mb-8 text-sm">Cálculo de Consumo Inteligente</p>
+        <p class="text-center text-gray-500 mb-8 text-sm">
+            Seguimiento de consumo eficiente
+        </p>
 
-        <form id="calc-form" class="flex flex-col gap-6">
+        <form id="calc-form" class="flex flex-col gap-5">
             
             <div>
-                <label class="text-xs text-electricBlue uppercase tracking-wider pl-1 mb-1 block">
+                <label class="text-xs text-gray-500 uppercase tracking-wider mb-1 block">
                     Kilometraje actual
                 </label>
-                <input type="number" id="km" placeholder="0.0" required
-                    class="w-full bg-black/30 border border-gray-700 text-white rounded-lg px-4 py-3 text-lg placeholder:text-gray-600 focus:outline-none focus:border-electricBlue focus:ring-1 focus:ring-electricBlue focus:shadow-neon-blue transition duration-300">
+                <input type="number" id="km" placeholder="Ej: 12500" required
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-ecoGreen focus:ring-1 focus:ring-ecoGreen transition">
             </div>
 
             <div>
-                <label class="text-xs text-electricBlue uppercase tracking-wider pl-1 mb-1 block">
+                <label class="text-xs text-gray-500 uppercase tracking-wider mb-1 block">
                     Litros cargados
                 </label>
-                <input type="number" id="litros" placeholder="0.0" step="0.01" required
-                    class="w-full bg-black/30 border border-gray-700 text-white rounded-lg px-4 py-3 text-lg placeholder:text-gray-600 focus:outline-none focus:border-electricBlue focus:ring-1 focus:ring-electricBlue focus:shadow-neon-blue transition duration-300">
+                <input type="number" id="litros" placeholder="Ej: 40" step="0.01" required
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-ecoGreen focus:ring-1 focus:ring-ecoGreen transition">
             </div>
 
             <button type="submit" 
-                class="w-full mt-4 bg-gradient-to-r from-neonPurple to-electricBlue text-darkBg font-bold uppercase tracking-widest py-4 rounded-lg hover:from-electricBlue hover:to-neonPurple transform hover:scale-[1.02] transition duration-300 shadow-neon-blue active:scale-[0.98]">
-                Agregar Carga
+                class="w-full mt-2 bg-ecoGreen text-white font-medium py-3 rounded-lg hover:bg-ecoDark transition">
+                Agregar carga
             </button>
         </form>
+
         <div class="mt-8">
-            <h2 class="text-lg text-electricBlue mb-3 text-center uppercase tracking-wider">
-                Historial de cargas
+            <h2 class="text-sm font-medium text-gray-600 mb-3">
+                Historial
             </h2>
 
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left border border-gray-700 rounded-lg overflow-hidden">
-                    <thead class="bg-black/40 text-gray-300">
+                <table class="w-full text-sm text-left">
+                    <thead class="text-gray-500 border-b">
                         <tr>
-                            <th class="px-3 py-2">#</th>
-                            <th class="px-3 py-2">Km</th>
-                            <th class="px-3 py-2">Litros</th>
+                            <th class="py-2">#</th>
+                            <th class="py-2">Km</th>
+                            <th class="py-2">Litros</th>
                         </tr>
                     </thead>
-                    <tbody id="lista-cargas" class="text-gray-200">
+                    <tbody id="lista-cargas" class="text-gray-700">
                     </tbody>
                 </table>
             </div>
         </div>
-        <div id="resultado" class="mt-8 text-center min-h-[50px] transition-all duration-500"></div>
+
+        <div id="resultado" class="mt-6 text-sm text-gray-700 text-center"></div>
     </div>
 
     <script src="script.js"></script>
